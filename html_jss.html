@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition Circle Left TO Right</title>
+</head>
+<body>
+    <main id="main">
+        <!-- <p id="text-question"><span id="question">Question: </span>Create a round shape circle where the radius is: 100px in a blank white webpage with
+            help of HTML and JSS. Now, you will need to write appropriate javascript code which will
+            enable the circle to move to the right or left as soon as the user types ‘A’ and ‘D’. So, if
+            the user inputs A from the keyboard the circle should move to the far left of the screen if
+            the user inputs ‘D’ then the circle should move to the far right. You are not allowed to use
+            any framework (i.e jQuery) to complete this task.</p> -->
+        
+        <div id="circle-container">
+            <div id="circle">
+                <p id="point"></p>
+            </div>
+        </div>
+        <div id="input-container">
+            <label for="input-text">INPUT:</label><br/><br/>
+            <input oninput="handleInput()" placeholder="Enter just A or D" type="text" id="input-text" />
+        </div>
+    </main>
+
+
+    <script>
+        const main_block = document.getElementById('main');
+        main_block.style.width = '100%';
+        main_block.style.height = '100%';
+        main_block.style.padding = '0';
+        main_block.style.margin = '0';
+
+
+        // const text_ques = document.getElementById('text-question');
+        // text_ques.style.width = '50%';
+        // text_ques.style.margin = "50px auto 0 auto";
+        // text_ques.style.textAlign = "justify";
+        // document.getElementById('question').style.fontSize = "1.5em";
+        const circle_container = document.getElementById('circle-container');
+        circle_container.style.width = '100%';
+        circle_container.style.height = '100%';
+        circle_container.style.margin = '60px 10px 0 10px';
+        circle_container.style.borderBottom = '1px solid #ccc';
+        const circle = document.getElementById('circle');
+        circle.style.width = '200px';
+        circle.style.height = '200px';
+        circle.style.borderRadius = '100px';
+        circle.style.backgroundColor = '#1D3B70';
+        circle.style.position = 'relative';
+        circle.style.left = '7%';
+        const point = document.getElementById('point');
+        point.style.width = '4px';
+        point.style.height = '4px';
+        point.style.backgroundColor = '#fff';
+        point.style.borderRadius = '50%';
+        point.style.position = 'absolute';
+        point.style.top = '42%';
+        point.style.left = '50%';
+
+        const input_container = document.getElementById('input-container');
+        input_container.style.width = '90%';
+        input_container.style.height = '100%';
+        input_container.style.margin = '20px auto';
+        input_container.style.textAlign = "center";
+        input_container.style.padding = "0";
+        const input_text = document.getElementById('input-text');
+        input_text.style.outline = "none";
+        input_text.style.border = "2px solid #ccc";
+        input_text.style.padding = "8px";
+        input_text.style.borderRadius = "6px";
+        input_text.style.width = "50%";
+
+        const handleInput = () => {
+            const input_text = document.getElementById('input-text');
+            const input_text_value = input_text.value;
+            // console.log({input_text_value});
+            const last_char = input_text_value[input_text_value.length - 1];
+            // console.log({last_char});
+            if (last_char === 'A') {
+                circle.style.transform = 'translateX(0)';
+                circle.style.transition = 'all 2.5s ease-in-out';
+
+            } else if (last_char === 'D') {
+                circle.style.transform = 'translateX(1440px)';
+                circle.style.transition = 'all 2.5s ease-in-out';
+
+            } else {
+                input_text.value = input_text_value.slice(0, -1);
+            }
+        }
+
+    </script>
+</body>
+</html>
